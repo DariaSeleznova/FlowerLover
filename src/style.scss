@@ -1,3 +1,350 @@
+@use "sass:map";
+
+$black: rgba(0, 0, 0, 1);
+$button-text: rgba(169, 59, 89, 1);
+$white: rgba(245, 235, 235, 1);
+$lading: rgba(185, 106, 127, 1);
+$light-landing: rgba(201, 161, 172, 1);
+$blue: rgba(85, 184, 255, 1);
+$gray: rgba(111, 101, 103, 1);
+$Playfair: "Playfair Display", serif;
+$Source: "Source Sans 3", sans-serif;
+$breakpoints: (
+    sm: 426px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1440px,
+    xxl: 1920px,
+);
+
+@mixin respond-max($size) {
+    @media (max-width: map.get($breakpoints, $size)) {
+        @content;
+    }
+}
+
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin Playfair-400 {
+    font-family: $Playfair;
+    font-weight: 400;
+    line-height: 0.6;
+}
+
 body {
-    background-color: black;
+    background-color: $black;
+    font-family: $Source;
+    margin: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin: 0 64px;
+
+    @include respond-max(lg) {
+        grid-template-columns: repeat(6, 1fr);
+        margin: 0 34px;
+    }
+
+    @include respond-max(md) {
+        grid-template-columns: repeat(4, 1fr);
+        margin: 0;
+    }
+}
+
+.header_content {
+    margin-top: 24px;
+    grid-column: 1/-1;
+    @include flex-row();
+    justify-content: space-between;
+    align-items: center;
+
+    @include respond-max(sm) {
+        margin: 24px 16px;
+    }
+
+    .mobile-btn {
+        display: none;
+
+        @include respond-max(md) {
+            @include flex-row();
+        }
+
+        button {
+            background-color: transparent;
+            border: none;
+        }
+
+        .search-input {
+            display: none;
+        }
+    }
+
+
+    nav {
+        @include respond-max(md) {
+            display: none;
+
+            .mobile-btn {
+                display: none;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: $white;
+            padding-left: 32px;
+            font-size: 20px;
+
+
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .close-btn {
+            display: none;
+        }
+    }
+
+    nav.active {
+        @include respond-max(md) {
+            @include flex-column();
+            position: fixed;
+            inset: 0;
+            background: $black;
+            width: 50%;
+            height: 50vh;
+            padding: 40px;
+            z-index: 100;
+        }
+
+        a {
+            padding: 20px 0;
+            border-bottom: 2px solid $white;
+        }
+    }
+
+    nav.active .close-btn {
+        display: block;
+        width: 50px;
+        height: 50px;
+        background-color: $white;
+        border-radius: 50%;
+    }
+
+    nav.active~.mobile-btn {
+        display: none;
+    }
+
+    .mobile-btn.search-active .search-input {
+        display: block;
+        background-color: $light-landing ;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+}
+
+.hero {
+    background: url("./assets/hero/hero_background.png")no-repeat, $black;
+    background-position: 100% 35%;
+    background-size: 45% auto;
+    height: 100vh;
+
+    @include respond-max(lg) {
+        background-position: 150% -10%;
+        background-size: 70%;
+    }
+
+    @include respond-max(md) {
+        background-position: 120% 0%;
+        background-size: 50%;
+    }
+
+    @include respond-max(sm) {
+        background-position: -100% 0%;
+        background-size: 110%;
+    }
+}
+
+.hero__section {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    height: 100%;
+    align-content: space-around;
+
+    @include respond-max(md) {
+        align-content: space-evenly;
+    }
+
+    @include respond-max(sm) {
+        grid-template-columns: repeat(4, 1fr);
+
+    }
+
+    .hero__content {
+        grid-column: 1/9;
+
+        @include respond-max(md) {
+            grid-column: 1/8;
+            margin: 50px 0;
+        }
+
+        @include respond-max(sm) {
+            grid-column: 1/-1;
+            margin-top: 320px;
+            margin-bottom: 24px;
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 40px 26px;
+        }
+
+        .hero__subtitle {
+            @include Playfair-400();
+            font-style: italic;
+            color: $button-text;
+            font-size: 48px;
+            margin: 0;
+
+            @include respond-max(md) {
+                margin: auto;
+                font-size: 38px;
+            }
+
+            @include respond-max(sm) {
+                font-size: 24px;
+            }
+        }
+
+        .hero__headline {
+            display: flex;
+            align-items: baseline;
+            gap: 24px;
+            padding-left: 120px;
+
+            @include respond-max(lg) {
+                flex-direction: column;
+                gap: 0;
+                padding-left: 70px;
+            }
+
+            @include respond-max(sm) {
+                flex-direction: row;
+                padding-left: 0;
+                padding: 5px
+            }
+
+        }
+
+        .hero__title {
+            @include Playfair-400();
+            color: $white;
+            font-size: 86px;
+
+            @include respond-max(md) {
+                font-size: 66px;
+            }
+
+            @include respond-max(sm) {
+                font-size: 40px;
+                line-height: 0.4;
+            }
+        }
+
+        .hero__description {
+            color: $white;
+            font-size: 24px;
+            margin: 0;
+            padding-left: 110px;
+
+            @include respond-max(lg) {
+                font-size: 20px;
+                margin: 50px auto;
+                padding-left: 20px;
+            }
+
+            @include respond-max(md) {
+                font-size: 16px;
+            }
+
+            @include respond-max(sm) {
+                display: none;
+            }
+        }
+
+        .hero__btn {
+            padding: 16px 125px;
+            background-color: $button-text;
+            color: $white;
+            font-family: $Source;
+            font-size: 24px;
+            border: none;
+            border-radius: 15px;
+            margin: 42px 110px;
+            text-transform: uppercase;
+
+            @include respond-max(lg) {
+                padding: 16px 100px;
+                margin: 42px 20px;
+            }
+
+            @include respond-max(md) {
+                padding: 16px 65px;
+                font-size: 16px;
+            }
+
+            @include respond-max(sm) {
+                padding: 16px 110px;
+                margin: 16px auto 40px;
+
+                font-size: 18px;
+            }
+        }
+
+    }
+
+    .hero__features {
+        grid-column: 3/11;
+        @include flex-row();
+        gap: 124px;
+
+        @include respond-max(lg) {
+            grid-column: 1/-1;
+        }
+
+        @include respond-max(sm) {
+            gap: 40px
+        }
+
+        .features {
+            @include flex-column();
+            align-items: center;
+
+            img {
+                @include respond-max(sm) {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+
+            p {
+                color: $white;
+                text-align: center;
+
+                @include respond-max(sm) {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
 }

@@ -4,6 +4,7 @@ $black: rgba(0, 0, 0, 1);
 $button-text: rgba(169, 59, 89, 1);
 $white: rgba(245, 235, 235, 1);
 $lading: rgba(185, 106, 127, 1);
+$lading-transparate: rgba(185, 106, 127, 0.5);
 $light-landing: rgba(201, 161, 172, 1);
 $blue: rgba(85, 184, 255, 1);
 $gray: rgba(111, 101, 103, 1);
@@ -168,8 +169,8 @@ body {
     }
 
     @include respond-max(md) {
-        background-position: 120% 0%;
-        background-size: 50%;
+        background-position: 240% 0%;
+        background-size: 80%;
     }
 
     @include respond-max(sm) {
@@ -293,6 +294,10 @@ body {
             margin: 42px 110px;
             text-transform: uppercase;
 
+            &:hover {
+                transform: scale(1.03);
+            }
+
             @include respond-max(lg) {
                 padding: 16px 100px;
                 margin: 42px 20px;
@@ -346,5 +351,203 @@ body {
                 }
             }
         }
+    }
+}
+
+.catalog {
+    background: url(./assets/catalog/background_catalog.jpg) no-repeat, $black;
+    background-position: 100% 0%;
+    height: 100vh;
+
+    @include respond-max(lg0) {
+        background-position: 180% 10%;
+    }
+
+    .catalog-label {
+        color: $button-text;
+        padding-left: 350px;
+        border-bottom: 3px solid $button-text;
+        font-family: $Playfair;
+        font-weight: 600;
+        font-size: 36px;
+
+        @include respond-max(lg) {
+            padding-left: 224px;
+        }
+    }
+
+}
+
+.delivery {
+    grid-column: 2/12;
+    background-color: $lading-transparate;
+    @include flex-column();
+    align-items: center;
+    margin: 100px 0;
+    border-radius: 15px;
+    padding: 0 24px;
+
+    @include respond-max(lg) {
+        grid-column: 1/-1;
+        margin: 100px 20px;
+    }
+
+    h2 {
+        color: $white;
+        font-family: $Playfair;
+        font-weight: 600;
+        font-size: 36px;
+    }
+
+    .selections_catalog {
+        @include flex-row();
+        width: 100%;
+        justify-content: space-between;
+        background-color: $lading;
+        border-radius: 15px;
+        padding: 21px 24px;
+
+        @include respond-max(md) {
+            @include flex-column();
+        }
+    }
+
+    .filter {
+        position: relative;
+        cursor: pointer;
+        width: 20%;
+        display: flex;
+        flex-wrap: wrap;
+
+        @include respond-max(md) {
+            width: 100%;
+            justify-content: flex-start;
+        }
+    }
+
+    .filter__header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 5px;
+        width: 100%;
+
+        color: $white;
+        font-size: 18px;
+        font-weight: 200;
+
+        // заголовок (Ціна...)
+        span:first-child {
+            order: 1;
+        }
+
+        // кнопка стрелки
+        .filter__header_btn {
+            order: 2;
+            margin-left: auto;
+            background-color: $lading;
+            border: none;
+            cursor: pointer;
+        }
+
+        // выбранные значения
+        .filter__value {
+            width: 100%;
+            order: 3;
+            color: $white;
+            opacity: 0.7;
+            font-size: 14px;
+            padding-top: 5px;
+        }
+    }
+
+    .filter__dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+
+        background: $lading-transparate;
+        padding: 15px;
+        border-radius: 10px;
+
+        width: 200px;
+
+        @include respond-max(md) {
+            position: relative;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 0;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 12px 0 12px 18px;
+            border-bottom: 1px solid rgba(68, 68, 68, 0.5);
+
+            span {
+                color: $white;
+                font-family: $Source;
+                font-weight: 200;
+                font-size: 18px;
+            }
+
+            input[type="checkbox"] {
+                appearance: none;
+                width: 18px;
+                height: 18px;
+                border: 2px solid $white;
+                border-radius: 4px;
+                cursor: pointer;
+                position: relative;
+                flex-shrink: 0;
+            }
+
+            input[type="checkbox"]:checked {
+                border-color: $button-text;
+            }
+
+            input[type="checkbox"]:checked::after {
+                content: "✔";
+                position: absolute;
+                top: -2px;
+                left: 2px;
+                font-size: 14px;
+                color: $button-text;
+            }
+        }
+
+        label:has(input:checked) span {
+            color: $button-text;
+        }
+
+        .apply-btn {
+            background-color: $button-text;
+            border: none;
+            border-radius: 5px;
+            color: $white;
+            font-family: $Source;
+            font-weight: 600;
+            padding: 5px 10px;
+            margin: 24px auto;
+            display: block;
+
+            @include respond-max(md) {
+                width: 100%;
+                margin: 15px 0;
+            }
+        }
+    }
+
+    .filter.active .filter__dropdown {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filter.active .filter__header_btn {
+        display: none;
     }
 }

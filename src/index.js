@@ -74,3 +74,55 @@ document.addEventListener("click", (e) => {
         }
     });
 });
+
+const likes = document.querySelectorAll(".product-card__like");
+
+likes.forEach(btn => {
+    btn.addEventListener("click", () => {
+        btn.classList.toggle("active");
+    });
+});
+
+
+const cards = document.querySelectorAll(".product-card");
+
+cards.forEach(card => {
+    card.addEventListener("click", (e) => {
+
+        if (e.target.closest(".product-card__actions")) return;
+        cards.forEach(c => {
+            if (c !== card) c.classList.remove("active");
+        });
+        card.classList.toggle("active");
+    });
+});
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".product-card")) {
+        document.querySelectorAll(".product-card")
+            .forEach(c => c.classList.remove("active"));
+    }
+});
+
+
+cards.forEach(card => {
+    const minus = card.querySelector(".minus");
+    const plus = card.querySelector(".plus");
+    const value = card.querySelector(".qty-value");
+
+    plus.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        let count = parseInt(value.textContent);
+        value.textContent = count + 1;
+    });
+
+    minus.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        let count = parseInt(value.textContent);
+
+        if (count > 1) {
+            value.textContent = count - 1;
+        }
+    });
+});

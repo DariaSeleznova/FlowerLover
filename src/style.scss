@@ -177,177 +177,177 @@ body {
         background-position: -100% 0%;
         background-size: 110%;
     }
-}
 
-.hero__section {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    height: 100%;
-    align-content: space-around;
-
-    @include respond-max(md) {
-        align-content: space-evenly;
-    }
-
-    @include respond-max(sm) {
-        grid-template-columns: repeat(4, 1fr);
-
-    }
-
-    .hero__content {
-        grid-column: 1/9;
+    .hero__section {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        height: 100%;
+        align-content: space-around;
 
         @include respond-max(md) {
-            grid-column: 1/8;
-            margin: 50px 0;
+            align-content: space-evenly;
         }
 
         @include respond-max(sm) {
-            grid-column: 1/-1;
-            margin-top: 320px;
-            margin-bottom: 24px;
-            background-color: rgba(255, 255, 255, 0.6);
-            padding: 40px 26px;
+            grid-template-columns: repeat(4, 1fr);
+
         }
 
-        .hero__subtitle {
-            @include Playfair-400();
-            font-style: italic;
-            color: $button-text;
-            font-size: 48px;
-            margin: 0;
+        .hero__content {
+            grid-column: 1/9;
 
             @include respond-max(md) {
-                margin: auto;
-                font-size: 38px;
+                grid-column: 1/8;
+                margin: 50px 0;
             }
 
             @include respond-max(sm) {
-                font-size: 24px;
-            }
-        }
-
-        .hero__headline {
-            display: flex;
-            align-items: baseline;
-            gap: 24px;
-            padding-left: 120px;
-
-            @include respond-max(lg) {
-                flex-direction: column;
-                gap: 0;
-                padding-left: 70px;
+                grid-column: 1/-1;
+                margin-top: 320px;
+                margin-bottom: 24px;
+                background-color: rgba(255, 255, 255, 0.6);
+                padding: 40px 26px;
             }
 
-            @include respond-max(sm) {
-                flex-direction: row;
-                padding-left: 0;
-                padding: 5px
-            }
+            .hero__subtitle {
+                @include Playfair-400();
+                font-style: italic;
+                color: $button-text;
+                font-size: 48px;
+                margin: 0;
 
-        }
+                @include respond-max(md) {
+                    margin: auto;
+                    font-size: 38px;
+                }
 
-        .hero__title {
-            @include Playfair-400();
-            color: $white;
-            font-size: 86px;
-
-            @include respond-max(md) {
-                font-size: 66px;
-            }
-
-            @include respond-max(sm) {
-                font-size: 40px;
-                line-height: 0.4;
-            }
-        }
-
-        .hero__description {
-            color: $white;
-            font-size: 24px;
-            margin: 0;
-            padding-left: 110px;
-
-            @include respond-max(lg) {
-                font-size: 20px;
-                margin: 50px auto;
-                padding-left: 20px;
-            }
-
-            @include respond-max(md) {
-                font-size: 16px;
-            }
-
-            @include respond-max(sm) {
-                display: none;
-            }
-        }
-
-        .hero__btn {
-            padding: 16px 125px;
-            background-color: $button-text;
-            color: $white;
-            font-family: $Source;
-            font-size: 24px;
-            border: none;
-            border-radius: 15px;
-            margin: 42px 110px;
-            text-transform: uppercase;
-
-            &:hover {
-                transform: scale(1.03);
-            }
-
-            @include respond-max(lg) {
-                padding: 16px 100px;
-                margin: 42px 20px;
-            }
-
-            @include respond-max(md) {
-                padding: 16px 65px;
-                font-size: 16px;
-            }
-
-            @include respond-max(sm) {
-                padding: 16px 110px;
-                margin: 16px auto 40px;
-
-                font-size: 18px;
-            }
-        }
-
-    }
-
-    .hero__features {
-        grid-column: 3/11;
-        @include flex-row();
-        gap: 124px;
-
-        @include respond-max(lg) {
-            grid-column: 1/-1;
-        }
-
-        @include respond-max(sm) {
-            gap: 40px
-        }
-
-        .features {
-            @include flex-column();
-            align-items: center;
-
-            img {
                 @include respond-max(sm) {
-                    width: 24px;
-                    height: 24px;
+                    font-size: 24px;
                 }
             }
 
-            p {
-                color: $white;
-                text-align: center;
+            .hero__headline {
+                display: flex;
+                align-items: baseline;
+                gap: 24px;
+                padding-left: 120px;
+
+                @include respond-max(lg) {
+                    flex-direction: column;
+                    gap: 0;
+                    padding-left: 70px;
+                }
 
                 @include respond-max(sm) {
-                    font-size: 12px;
+                    flex-direction: row;
+                    padding-left: 0;
+                    padding: 5px
+                }
+
+            }
+
+            .hero__title {
+                @include Playfair-400();
+                color: $white;
+                font-size: 86px;
+
+                @include respond-max(md) {
+                    font-size: 66px;
+                }
+
+                @include respond-max(sm) {
+                    font-size: 40px;
+                    line-height: 0.4;
+                }
+            }
+
+            .hero__description {
+                color: $white;
+                font-size: 24px;
+                margin: 0;
+                padding-left: 110px;
+
+                @include respond-max(lg) {
+                    font-size: 20px;
+                    margin: 50px auto;
+                    padding-left: 20px;
+                }
+
+                @include respond-max(md) {
+                    font-size: 16px;
+                }
+
+                @include respond-max(sm) {
+                    display: none;
+                }
+            }
+
+            .hero__btn {
+                padding: 16px 125px;
+                background-color: $button-text;
+                color: $white;
+                font-family: $Source;
+                font-size: 24px;
+                border: none;
+                border-radius: 15px;
+                margin: 42px 110px;
+                text-transform: uppercase;
+
+                &:hover {
+                    transform: scale(1.03);
+                }
+
+                @include respond-max(lg) {
+                    padding: 16px 100px;
+                    margin: 42px 20px;
+                }
+
+                @include respond-max(md) {
+                    padding: 16px 65px;
+                    font-size: 16px;
+                }
+
+                @include respond-max(sm) {
+                    padding: 16px 110px;
+                    margin: 16px auto 40px;
+
+                    font-size: 18px;
+                }
+            }
+
+        }
+
+        .hero__features {
+            grid-column: 3/11;
+            @include flex-row();
+            gap: 124px;
+
+            @include respond-max(lg) {
+                grid-column: 1/-1;
+            }
+
+            @include respond-max(sm) {
+                gap: 40px
+            }
+
+            .features {
+                @include flex-column();
+                align-items: center;
+
+                img {
+                    @include respond-max(sm) {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+
+                p {
+                    color: $white;
+                    text-align: center;
+
+                    @include respond-max(sm) {
+                        font-size: 12px;
+                    }
                 }
             }
         }
@@ -376,178 +376,179 @@ body {
         }
     }
 
-}
+    .catalog-section {
+        @include flex-column();
 
-.delivery {
-    grid-column: 2/12;
-    background-color: $lading-transparate;
-    @include flex-column();
-    align-items: center;
-    margin: 100px 0;
-    border-radius: 15px;
-    padding: 0 24px;
-
-    @include respond-max(lg) {
-        grid-column: 1/-1;
-        margin: 100px 20px;
-    }
-
-    h2 {
-        color: $white;
-        font-family: $Playfair;
-        font-weight: 600;
-        font-size: 36px;
-    }
-
-    .selections_catalog {
-        @include flex-row();
-        width: 100%;
-        justify-content: space-between;
-        background-color: $lading;
-        border-radius: 15px;
-        padding: 21px 24px;
-
-        @include respond-max(md) {
+        .delivery {
+            grid-column: 2/12;
+            background-color: $lading-transparate;
             @include flex-column();
-        }
-    }
-
-    .filter {
-        position: relative;
-        cursor: pointer;
-        width: 20%;
-        display: flex;
-        flex-wrap: wrap;
-
-        @include respond-max(md) {
-            width: 100%;
-            justify-content: flex-start;
-        }
-    }
-
-    .filter__header {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 5px;
-        width: 100%;
-
-        color: $white;
-        font-size: 18px;
-        font-weight: 200;
-
-        // заголовок (Ціна...)
-        span:first-child {
-            order: 1;
-        }
-
-        // кнопка стрелки
-        .filter__header_btn {
-            order: 2;
-            margin-left: auto;
-            background-color: $lading;
-            border: none;
-            cursor: pointer;
-        }
-
-        // выбранные значения
-        .filter__value {
-            width: 100%;
-            order: 3;
-            color: $white;
-            opacity: 0.7;
-            font-size: 14px;
-            padding-top: 5px;
-        }
-    }
-
-    .filter__dropdown {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-
-        background: $lading-transparate;
-        padding: 15px;
-        border-radius: 10px;
-
-        width: 200px;
-
-        @include respond-max(md) {
-            position: relative;
-            top: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.5);
-            padding: 0;
-        }
-
-        label {
-            display: flex;
             align-items: center;
-            gap: 10px;
-            margin: 12px 0 12px 18px;
-            border-bottom: 1px solid rgba(68, 68, 68, 0.5);
+            margin: 100px 0;
+            border-radius: 15px;
+            padding: 0 24px;
 
-            span {
+            @include respond-max(lg) {
+                grid-column: 1/-1;
+                margin: 100px 20px;
+            }
+
+            h2 {
                 color: $white;
-                font-family: $Source;
-                font-weight: 200;
-                font-size: 18px;
+                font-family: $Playfair;
+                font-weight: 600;
+                font-size: 36px;
             }
 
-            input[type="checkbox"] {
-                appearance: none;
-                width: 18px;
-                height: 18px;
-                border: 2px solid $white;
-                border-radius: 4px;
-                cursor: pointer;
-                position: relative;
-                flex-shrink: 0;
-            }
-
-            input[type="checkbox"]:checked {
-                border-color: $button-text;
-            }
-
-            input[type="checkbox"]:checked::after {
-                content: "✔";
-                position: absolute;
-                top: -2px;
-                left: 2px;
-                font-size: 14px;
-                color: $button-text;
-            }
-        }
-
-        label:has(input:checked) span {
-            color: $button-text;
-        }
-
-        .apply-btn {
-            background-color: $button-text;
-            border: none;
-            border-radius: 5px;
-            color: $white;
-            font-family: $Source;
-            font-weight: 600;
-            padding: 5px 10px;
-            margin: 24px auto;
-            display: block;
-
-            @include respond-max(md) {
+            .selections_catalog {
+                @include flex-row();
                 width: 100%;
-                margin: 15px 0;
+                justify-content: space-between;
+                background-color: $lading;
+                border-radius: 15px;
+                padding: 21px 24px;
+
+                @include respond-max(md) {
+                    @include flex-column();
+                }
+
+                .filter {
+                    position: relative;
+                    cursor: pointer;
+                    width: 20%;
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    @include respond-max(md) {
+                        width: 100%;
+                        justify-content: flex-start;
+                    }
+
+                    .filter__header {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        gap: 5px;
+                        width: 100%;
+
+                        color: $white;
+                        font-size: 18px;
+                        font-weight: 200;
+
+                        span:first-child {
+                            order: 1;
+                        }
+
+                        .filter__header_btn {
+                            order: 2;
+                            margin-left: auto;
+                            margin-right: 20px;
+                            background-color: $lading;
+                            border: none;
+                            cursor: pointer;
+                        }
+
+                        .filter__value {
+                            width: 100%;
+                            order: 3;
+                            color: $white;
+                            opacity: 0.7;
+                            font-size: 14px;
+                            padding-top: 5px;
+                        }
+                    }
+
+                    .filter__dropdown {
+                        display: none;
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+
+                        background: $lading-transparate;
+                        padding: 15px;
+                        border-radius: 10px;
+
+                        width: 200px;
+
+                        @include respond-max(md) {
+                            position: relative;
+                            top: 0;
+                            width: 100%;
+                            background-color: rgba(255, 255, 255, 0.5);
+                            padding: 0;
+                        }
+
+                        label {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            margin: 12px 0 12px 18px;
+                            border-bottom: 1px solid rgba(68, 68, 68, 0.5);
+
+                            span {
+                                color: $white;
+                                font-family: $Source;
+                                font-weight: 200;
+                                font-size: 18px;
+                            }
+
+                            input[type="checkbox"] {
+                                appearance: none;
+                                width: 18px;
+                                height: 18px;
+                                border: 2px solid $white;
+                                border-radius: 4px;
+                                cursor: pointer;
+                                position: relative;
+                                flex-shrink: 0;
+                            }
+
+                            input[type="checkbox"]:checked {
+                                border-color: $button-text;
+                            }
+
+                            input[type="checkbox"]:checked::after {
+                                content: "✔";
+                                position: absolute;
+                                top: -2px;
+                                left: 2px;
+                                font-size: 14px;
+                                color: $button-text;
+                            }
+                        }
+
+                        label:has(input:checked) span {
+                            color: $button-text;
+                        }
+
+                        .apply-btn {
+                            background-color: $button-text;
+                            border: none;
+                            border-radius: 5px;
+                            color: $white;
+                            font-family: $Source;
+                            font-weight: 600;
+                            padding: 5px 10px;
+                            margin: 24px auto;
+                            display: block;
+
+                            @include respond-max(md) {
+                                width: 100%;
+                                margin: 15px 0;
+                            }
+                        }
+                    }
+
+                    .filter.active .filter__dropdown {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    .filter.active .filter__header_btn {
+                        display: none;
+                    }
+                }
             }
         }
-    }
-
-    .filter.active .filter__dropdown {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .filter.active .filter__header_btn {
-        display: none;
     }
 }

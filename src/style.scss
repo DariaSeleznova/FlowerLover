@@ -40,6 +40,14 @@ $breakpoints: (
     line-height: 0.6;
 }
 
+@mixin label {
+    color: $button-text;
+    border-bottom: 3px solid $button-text;
+    font-family: $Playfair;
+    font-weight: 600;
+    font-size: 36px;
+}
+
 body {
     background-color: $black;
     font-family: $Source;
@@ -72,6 +80,24 @@ body {
 
 .bg_blue {
     background-color: $blue;
+}
+
+.noreverse {
+    flex-direction: row;
+
+    @include respond-max(md) {
+        flex-direction: column;
+        margin: auto 30px auto 10px;
+    }
+}
+
+.reverse {
+    flex-direction: row-reverse;
+
+    @include respond-max(md) {
+        flex-direction: column;
+        margin: auto 10px auto 30px;
+    }
 }
 
 .header_content {
@@ -383,12 +409,8 @@ body {
     }
 
     .catalog-label {
-        color: $button-text;
+        @include label();
         padding-left: 350px;
-        border-bottom: 3px solid $button-text;
-        font-family: $Playfair;
-        font-weight: 600;
-        font-size: 36px;
 
         @include respond-max(lg) {
             padding-left: 224px;
@@ -886,6 +908,93 @@ body {
             }
 
 
+        }
+    }
+}
+
+.quality {
+    .quality_title {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin: 90px 0;
+
+        .quality-label {
+            @include label();
+            padding-right: 200px;
+
+            @include respond-max(sm) {
+                padding-right: 92px;
+            }
+        }
+    }
+
+    .quality_content {
+        grid-column: 1/-1;
+        @include flex-column();
+        margin: 40px 0;
+        width: 100%;
+        gap: 5px;
+
+        .quality__control {
+            display: flex;
+            justify-content: space-between;
+
+            @include respond-max(md) {
+                padding: 30px;
+            }
+
+            @include respond-max(sm) {
+                padding: 0;
+            }
+
+            .quality__control_image {
+                width: 50%;
+
+                @include respond-max(md) {
+                    width: 100%;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .quality__control_discription {
+                color: $white;
+                width: 40%;
+
+                @include respond-max(lg) {
+                    width: 48%;
+                }
+
+                @include respond-max(md) {
+                    width: 100%;
+                }
+
+                h3 {
+                    font-weight: 400;
+                    font-size: 32px;
+
+                    @include respond-max(md) {
+                        font-size: 24px;
+                    }
+                }
+
+                p {
+                    font-size: 20px;
+                    font-weight: 300;
+
+                    @include respond-max(lg) {
+                        font-size: 16px;
+                    }
+
+                    @include respond-max(sm) {
+                        font-size: 12px;
+                    }
+                }
+            }
         }
     }
 }

@@ -618,9 +618,11 @@ body {
                 grid-template-columns: repeat(3, 1fr);
                 column-gap: 75px;
                 row-gap: 20px;
+                padding: 0 100px;
 
                 @include respond-max(lg) {
                     column-gap: 20px;
+                    padding: 0;
                 }
 
                 @include respond-max(md) {
@@ -704,7 +706,6 @@ body {
                     .product-card__image {
                         width: 100%;
                         position: relative;
-                        padding: 15px;
                         @include flex-column();
                         align-items: center;
 

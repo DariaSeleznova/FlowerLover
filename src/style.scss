@@ -1005,13 +1005,13 @@ body {
     background-position: 0% 0%;
 
     @include respond-max(sm) {
-        background-position: 0% 150%
+        background-position: 0% 150%;
     }
 
     .form-label {
         @include respond-max(sm) {
+            padding: 0 10px;
             padding-right: 50px;
-            padding-left: 10px;
         }
     }
 
@@ -1033,6 +1033,17 @@ body {
         background-color: $lading-transparate;
         border-radius: 15px;
 
+        .form-success,
+        .form,
+        .form_discription {
+            @include respond-max(md) {
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
         .form-success {
             display: none;
             flex-direction: column;
@@ -1047,7 +1058,6 @@ body {
             .close_success {
                 left: 50%;
                 position: relative;
-                top: 0%;
                 border: none;
                 background: transparent;
 
@@ -1060,19 +1070,17 @@ body {
                 width: 100%;
                 border-bottom: 2px solid $button-text;
                 text-align: center;
-                margin-top: 163px;
-                margin-bottom: 246px;
+                margin: 163px 0 246px;
 
                 @include respond-max(lg) {
-                    margin-top: 63px;
-                    margin-bottom: 146px;
+                    margin: 63px 0 146px;
                 }
 
                 h3 {
-                    font-family: $Playfair;
-                    font-size: 48px;
+                    @include Playfair-400();
                     font-style: italic;
                     color: $button-text;
+                    font-size: 48px;
 
                     @include respond-max(md) {
                         font-size: 24px;
@@ -1080,6 +1088,7 @@ body {
                 }
 
                 p {
+                    margin: 0;
                     font-size: 32px;
                     font-weight: 700;
                     color: $white;
@@ -1090,7 +1099,6 @@ body {
                 }
             }
         }
-
 
         .form_content {
             @include flex-row();
@@ -1161,11 +1169,11 @@ body {
                     }
 
                     input {
-                        border-top-left-radius: 15px;
-                        border-bottom-left-radius: 15px;
+                        border-radius: 15px 0 0 15px;
                         padding: 22px 52px 22px 38px;
                         border: none;
                         font-size: 20px;
+                        flex: 1;
 
                         @include respond-max(sm) {
                             padding: 20px;
@@ -1174,8 +1182,7 @@ body {
 
                     .input-icon {
                         background-color: $white;
-                        border-top-right-radius: 15px;
-                        border-bottom-right-radius: 15px;
+                        border-radius: 0 15px 15px 0;
                         padding: 22px;
                         border-left: 1px solid $gray;
 
@@ -1219,77 +1226,57 @@ body {
                 li {
                     opacity: 0;
                     transform: translateX(-20px);
-
                     display: flex;
                     align-items: center;
                     gap: 12px;
-
                     font-size: 20px;
                     margin-bottom: 12px;
-                }
-            }
 
-            .form_discription li.show {
-                animation: fadeInLeft 1.5s ease forwards;
-            }
+                    &::before {
+                        content: "";
+                        width: 48px;
+                        height: 48px;
+                        flex-shrink: 0;
+                        background: url("./assets/customer/icon\ _checkmark\ outline_.png") no-repeat center;
+                        margin-top: 4px;
+                    }
 
-            .form_discription li:nth-child(1) {
-                animation-delay: 0.4s;
-            }
+                    &.show {
+                        animation: fadeInLeft 1.5s ease forwards;
+                    }
 
-            .form_discription li:nth-child(2) {
-                animation-delay: 0.8s;
-            }
-
-            .form_discription li:nth-child(3) {
-                animation-delay: 1.2s;
-            }
-
-            .form_discription li:nth-child(4) {
-                animation-delay: 1.6s;
-            }
-
-            @keyframes fadeInLeft {
-                from {
-                    opacity: 0;
-                    transform: translateX(-20px);
+                    @for $i from 1 through 4 {
+                        &:nth-child(#{$i}) {
+                            animation-delay: $i * 0.4s;
+                        }
+                    }
                 }
 
-                to {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-            }
+                @keyframes fadeInLeft {
+                    from {
+                        opacity: 0;
+                        transform: translateX(-20px);
+                    }
 
-            .form_discription {
-                li::before {
-                    content: "";
-                    width: 48px;
-                    height: 48px;
-                    flex-shrink: 0;
-
-                    background: url("./assets/customer/icon\ _checkmark\ outline_.png") no-repeat center;
-                    background-size: auto;
-
-                    margin-top: 4px;
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
                 }
             }
         }
     }
 
-    .form_section.success-active .form-success {
-        display: flex;
-    }
-
-    .form_section.success-active .form {
-        @include respond-max(md) {
-            display: none;
+    .form_section.success-active {
+        .form-success {
+            display: flex;
         }
-    }
 
-    .form_section.success-active .form_discription {
-        @include respond-max(md) {
-            display: none;
+        .form,
+        .form_discription {
+            @include respond-max(md) {
+                display: none;
+            }
         }
     }
 }

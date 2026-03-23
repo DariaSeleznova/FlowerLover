@@ -1,9 +1,23 @@
 require('./style.scss');
 
+// ============ DOM Elements ============
 const burger = document.getElementById("burger-menu");
 const closeBtn = document.getElementById("closeBtn");
 const nav = document.querySelector(".menu");
+const searchBtn = document.getElementById("searchBtn");
+const mobileBtns = document.querySelector(".mobile-btn");
+const filters = document.querySelectorAll(".filter");
+const likes = document.querySelectorAll(".product-card__like");
+const cards = document.querySelectorAll(".product-card");
+const form = document.querySelector(".form form");
+const success = document.getElementById("formSuccess");
+const closeSuc = document.querySelector(".close_success");
+const formBlock = document.querySelector(".form");
+const discForm = document.querySelector(".form_discription");
+const section = document.querySelector(".form_content");
+const items = document.querySelectorAll(".form_discription li");
 
+// ============ Mobile Menu ============
 burger.addEventListener("click", () => {
     nav.classList.add("active");
 });
@@ -11,15 +25,14 @@ burger.addEventListener("click", () => {
 closeBtn.addEventListener("click", () => {
     nav.classList.remove("active");
 });
-const searchBtn = document.getElementById("searchBtn");
-const mobileBtns = document.querySelector(".mobile-btn");
 
+// ============ Search Button ============
 searchBtn.addEventListener("click", () => {
     mobileBtns.classList.toggle("search-active");
 });
 
+// ============ Close Elements on Outside Click ============
 document.addEventListener("click", (e) => {
-
     if (!mobileBtns.contains(e.target)) {
         mobileBtns.classList.remove("search-active");
     }
@@ -27,11 +40,9 @@ document.addEventListener("click", (e) => {
     if (!nav.contains(e.target) && !burger.contains(e.target)) {
         nav.classList.remove("active");
     }
-
 });
 
-const filters = document.querySelectorAll(".filter");
-
+// ============ Filters ============
 filters.forEach(filter => {
     const header = filter.querySelector(".filter__header_btn");
     const value = filter.querySelector(".filter__value");
@@ -40,70 +51,48 @@ filters.forEach(filter => {
 
     header.addEventListener("click", (e) => {
         e.stopPropagation();
-
-        filters.forEach(f => {
-            if (f !== filter) f.classList.remove("active");
-        });
-
+        filters.forEach(f => f !== filter && f.classList.remove("active"));
         filter.classList.toggle("active");
     });
 
     applyBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-
-        const selected = [];
-
-        checkboxes.forEach(cb => {
-            if (cb.checked) {
-                selected.push(cb.value);
-            }
-        });
-
-        value.textContent = selected.length
-            ? ": " + selected.join(", ")
-            : "";
-
+        const selected = Array.from(checkboxes)
+            .filter(cb => cb.checked)
+            .map(cb => cb.value);
+        value.textContent = selected.length ? ": " + selected.join(", ") : "";
         filter.classList.remove("active");
     });
 });
 
 document.addEventListener("click", (e) => {
     filters.forEach(filter => {
-        if (!filter.contains(e.target)) {
-            filter.classList.remove("active");
-        }
+        !filter.contains(e.target) && filter.classList.remove("active");
     });
 });
 
-const likes = document.querySelectorAll(".product-card__like");
-
+// ============ Product Card Likes ============
 likes.forEach(btn => {
     btn.addEventListener("click", () => {
         btn.classList.toggle("active");
     });
 });
 
-
-const cards = document.querySelectorAll(".product-card");
-
+// ============ Product Card Toggle ============
 cards.forEach(card => {
     card.addEventListener("click", (e) => {
-
         if (e.target.closest(".product-card__actions")) return;
-        cards.forEach(c => {
-            if (c !== card) c.classList.remove("active");
-        });
+        cards.forEach(c => c !== card && c.classList.remove("active"));
         card.classList.toggle("active");
     });
 });
+
 document.addEventListener("click", (e) => {
-    if (!e.target.closest(".product-card")) {
-        document.querySelectorAll(".product-card")
-            .forEach(c => c.classList.remove("active"));
-    }
+    !e.target.closest(".product-card") &&
+        cards.forEach(c => c.classList.remove("active"));
 });
 
-
+// ============ Product Card Quantity ============
 cards.forEach(card => {
     const minus = card.querySelector(".minus");
     const plus = card.querySelector(".plus");
@@ -111,39 +100,22 @@ cards.forEach(card => {
 
     plus.addEventListener("click", (e) => {
         e.stopPropagation();
-
-        let count = parseInt(value.textContent);
-        value.textContent = count + 1;
+        value.textContent = parseInt(value.textContent) + 1;
     });
 
     minus.addEventListener("click", (e) => {
         e.stopPropagation();
-
-        let count = parseInt(value.textContent);
-
-        if (count > 1) {
-            value.textContent = count - 1;
-        }
+        const count = parseInt(value.textContent);
+        if (count > 1) value.textContent = count - 1;
     });
 });
 
-const form = document.querySelector(".form form");
-const success = document.getElementById("formSuccess");
-const closeSuc = document.querySelector(".close_success");
-const formBlock = document.querySelector(".form");
-const discForm = document.querySelector(".form_discription");
-const section = document.querySelector(".form_content");
-
+// ============ Form Submission ============
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     section.classList.add("success-active");
-});
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
     formBlock.style.display = "none";
-    discForm.style.display = "none"
+    discForm.style.display = "none";
     success.style.display = "flex";
 });
 
@@ -151,21 +123,17 @@ closeSuc.addEventListener("click", () => {
     success.style.display = "none";
     formBlock.style.display = "block";
     discForm.style.display = "block";
-
     form.reset();
 });
 
-const items = document.querySelectorAll(".form_discription li");
-
-const observer = new IntersectionObserver((entries, observer) => {
+// ============ Intersection Observer ============
+const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add("show");
             observer.unobserve(entry.target);
         }
     });
-}, {
-    threshold: 0.3
-});
+}, { threshold: 0.3 });
 
 items.forEach(item => observer.observe(item));

@@ -4,10 +4,10 @@ $black: rgba(0, 0, 0, 1);
 $button-text: rgba(169, 59, 89, 1);
 $white: rgb(252, 249, 249);
 $lading: rgba(185, 106, 127, 1);
-$lading-transparate: rgba(185, 106, 127, 0.5);
+$lading-transparate: rgba(185, 106, 127, 0.7);
 $light-landing: rgba(201, 161, 172, 1);
 $blue: rgba(85, 184, 255, 1);
-$gray: rgba(111, 101, 103, 1);
+$gray: rgba(111, 101, 103, 0.7);
 $Playfair: "Playfair Display", serif;
 $Source: "Source Sans 3", sans-serif;
 $breakpoints: (
@@ -666,6 +666,7 @@ body {
                     position: relative;
                     background-color: $white;
                     border-radius: 15px;
+                    transition: 0.5s ease;
 
                     @include respond-max(sm) {
                         flex: 0 0 80%;
@@ -995,6 +996,300 @@ body {
                     }
                 }
             }
+        }
+    }
+}
+
+.customer_relations {
+    background: url(./assets/customer/customer_background.png) no-repeat, $black;
+    background-position: 0% 0%;
+
+    @include respond-max(sm) {
+        background-position: 0% 150%
+    }
+
+    .form-label {
+        @include respond-max(sm) {
+            padding-right: 50px;
+            padding-left: 10px;
+        }
+    }
+
+    .form-label_span,
+    .clients-label_span {
+        @include label();
+    }
+
+    .form-label_span {
+        padding-left: 70px;
+
+        @include respond-max(md) {
+            padding-left: 0;
+        }
+    }
+
+    .form_section {
+        margin: 120px 0;
+        background-color: $lading-transparate;
+        border-radius: 15px;
+
+        .form-success {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+            @include respond-max(md) {
+                position: relative;
+                z-index: 5;
+            }
+
+            .close_success {
+                left: 50%;
+                position: relative;
+                top: 0%;
+                border: none;
+                background: transparent;
+
+                @include respond-max(md) {
+                    left: 40%;
+                }
+            }
+
+            .info_success {
+                width: 100%;
+                border-bottom: 2px solid $button-text;
+                text-align: center;
+                margin-top: 163px;
+                margin-bottom: 246px;
+
+                @include respond-max(lg) {
+                    margin-top: 63px;
+                    margin-bottom: 146px;
+                }
+
+                h3 {
+                    font-family: $Playfair;
+                    font-size: 48px;
+                    font-style: italic;
+                    color: $button-text;
+
+                    @include respond-max(md) {
+                        font-size: 24px;
+                    }
+                }
+
+                p {
+                    font-size: 32px;
+                    font-weight: 700;
+                    color: $white;
+
+                    @include respond-max(md) {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+
+
+        .form_content {
+            @include flex-row();
+            justify-content: space-between;
+            color: $white;
+            padding: 40px 0;
+
+            @include respond-max(md) {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h3 {
+                font-size: 32px;
+                font-weight: 300;
+
+                @include respond-max(sm) {
+                    font-size: 24px;
+                }
+            }
+
+            .form,
+            .form_discription {
+                width: 40%;
+
+                @include respond-max(lg) {
+                    width: 50%;
+                }
+
+                @include respond-max(md) {
+                    width: 90%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+
+            }
+
+            .form {
+                padding: 0 64px 46px 55px;
+
+                @include respond-max(lg) {
+                    padding: 0;
+                }
+
+                @include respond-max(sm) {
+                    align-items: baseline;
+                }
+
+
+                form {
+                    width: 416px;
+
+                    @include respond-max(sm) {
+                        width: 358px;
+                    }
+                }
+
+                .input-wrapper {
+                    @include flex-row();
+                    margin-top: 40px;
+                    border-radius: 15px;
+                    width: 100%;
+
+                    @include respond-max(sm) {
+                        margin-top: 5px;
+                    }
+
+                    input {
+                        border-top-left-radius: 15px;
+                        border-bottom-left-radius: 15px;
+                        padding: 22px 52px 22px 38px;
+                        border: none;
+                        font-size: 20px;
+
+                        @include respond-max(sm) {
+                            padding: 20px;
+                        }
+                    }
+
+                    .input-icon {
+                        background-color: $white;
+                        border-top-right-radius: 15px;
+                        border-bottom-right-radius: 15px;
+                        padding: 22px;
+                        border-left: 1px solid $gray;
+
+                        @include respond-max(sm) {
+                            padding: 20px;
+                        }
+
+                        img {
+                            width: 28px;
+                            height: 28px;
+
+                            @include respond-max(sm) {
+                                width: 24px;
+                                height: 24px;
+                            }
+                        }
+                    }
+                }
+
+                .form_btn {
+                    width: 100%;
+                    margin-top: 40px;
+                    padding: 22px 100px;
+                    font-size: 24px;
+                    border: none;
+                    border-radius: 15px;
+                    background-color: $button-text;
+                    color: $white;
+
+                    @include respond-max(sm) {
+                        padding: 20px 0;
+                    }
+                }
+            }
+
+            .form_discription {
+                ul {
+                    padding-left: 0;
+                }
+
+                li {
+                    opacity: 0;
+                    transform: translateX(-20px);
+
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+
+                    font-size: 20px;
+                    margin-bottom: 12px;
+                }
+            }
+
+            .form_discription li.show {
+                animation: fadeInLeft 1.5s ease forwards;
+            }
+
+            .form_discription li:nth-child(1) {
+                animation-delay: 0.4s;
+            }
+
+            .form_discription li:nth-child(2) {
+                animation-delay: 0.8s;
+            }
+
+            .form_discription li:nth-child(3) {
+                animation-delay: 1.2s;
+            }
+
+            .form_discription li:nth-child(4) {
+                animation-delay: 1.6s;
+            }
+
+            @keyframes fadeInLeft {
+                from {
+                    opacity: 0;
+                    transform: translateX(-20px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            .form_discription {
+                li::before {
+                    content: "";
+                    width: 48px;
+                    height: 48px;
+                    flex-shrink: 0;
+
+                    background: url("./assets/customer/icon\ _checkmark\ outline_.png") no-repeat center;
+                    background-size: auto;
+
+                    margin-top: 4px;
+                }
+            }
+        }
+    }
+
+    .form_section.success-active .form-success {
+        display: flex;
+    }
+
+    .form_section.success-active .form {
+        @include respond-max(md) {
+            display: none;
+        }
+    }
+
+    .form_section.success-active .form_discription {
+        @include respond-max(md) {
+            display: none;
         }
     }
 }

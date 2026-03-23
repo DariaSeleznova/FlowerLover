@@ -126,3 +126,46 @@ cards.forEach(card => {
         }
     });
 });
+
+const form = document.querySelector(".form form");
+const success = document.getElementById("formSuccess");
+const closeSuc = document.querySelector(".close_success");
+const formBlock = document.querySelector(".form");
+const discForm = document.querySelector(".form_discription");
+const section = document.querySelector(".form_content");
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    section.classList.add("success-active");
+});
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    formBlock.style.display = "none";
+    discForm.style.display = "none"
+    success.style.display = "flex";
+});
+
+closeSuc.addEventListener("click", () => {
+    success.style.display = "none";
+    formBlock.style.display = "block";
+    discForm.style.display = "block";
+
+    form.reset();
+});
+
+const items = document.querySelectorAll(".form_discription li");
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.3
+});
+
+items.forEach(item => observer.observe(item));

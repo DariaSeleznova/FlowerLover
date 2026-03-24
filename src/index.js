@@ -1,5 +1,4 @@
 const { forEach } = require('lodash');
-
 require('./style.scss');
 
 // ============ DOM Elements ============
@@ -18,31 +17,17 @@ const formBlock = document.querySelector(".form");
 const discForm = document.querySelector(".form_discription");
 const section = document.querySelector(".form_content");
 const items = document.querySelectorAll(".form_discription li");
-
+const track = document.querySelector(".clients_cards");
+const slider = document.querySelector(".clients_cards");
 
 // ============ Mobile Menu ============
-burger.addEventListener("click", () => {
-    nav.classList.add("active");
-});
+burger.addEventListener("click", () => nav.classList.add("active"));
+closeBtn.addEventListener("click", () => nav.classList.remove("active"));
+searchBtn.addEventListener("click", () => mobileBtns.classList.toggle("search-active"));
 
-closeBtn.addEventListener("click", () => {
-    nav.classList.remove("active");
-});
-
-// ============ Search Button ============
-searchBtn.addEventListener("click", () => {
-    mobileBtns.classList.toggle("search-active");
-});
-
-// ============ Close Elements on Outside Click ============
 document.addEventListener("click", (e) => {
-    if (!mobileBtns.contains(e.target)) {
-        mobileBtns.classList.remove("search-active");
-    }
-
-    if (!nav.contains(e.target) && !burger.contains(e.target)) {
-        nav.classList.remove("active");
-    }
+    if (!mobileBtns.contains(e.target)) mobileBtns.classList.remove("search-active");
+    if (!nav.contains(e.target) && !burger.contains(e.target)) nav.classList.remove("active");
 });
 
 // ============ Filters ============
@@ -60,28 +45,19 @@ filters.forEach(filter => {
 
     applyBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        const selected = Array.from(checkboxes)
-            .filter(cb => cb.checked)
-            .map(cb => cb.value);
+        const selected = Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value);
         value.textContent = selected.length ? ": " + selected.join(", ") : "";
         filter.classList.remove("active");
     });
 });
 
 document.addEventListener("click", (e) => {
-    filters.forEach(filter => {
-        !filter.contains(e.target) && filter.classList.remove("active");
-    });
+    filters.forEach(filter => !filter.contains(e.target) && filter.classList.remove("active"));
 });
 
-// ============ Product Card Likes ============
-likes.forEach(btn => {
-    btn.addEventListener("click", () => {
-        btn.classList.toggle("active");
-    });
-});
+// ============ Product Cards ============
+likes.forEach(btn => btn.addEventListener("click", () => btn.classList.toggle("active")));
 
-// ============ Product Card Toggle ============
 cards.forEach(card => {
     card.addEventListener("click", (e) => {
         if (e.target.closest(".product-card__actions")) return;
@@ -91,11 +67,9 @@ cards.forEach(card => {
 });
 
 document.addEventListener("click", (e) => {
-    !e.target.closest(".product-card") &&
-        cards.forEach(c => c.classList.remove("active"));
+    !e.target.closest(".product-card") && cards.forEach(c => c.classList.remove("active"));
 });
 
-// ============ Product Card Quantity ============
 cards.forEach(card => {
     const minus = card.querySelector(".minus");
     const plus = card.querySelector(".plus");
@@ -113,7 +87,7 @@ cards.forEach(card => {
     });
 });
 
-// ============ Form Submission ============
+// ============ Form ============
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     section.classList.add("success-active");
@@ -141,31 +115,21 @@ const observer = new IntersectionObserver((entries) => {
 
 items.forEach(item => observer.observe(item));
 
-// ============ Carousel (Basic Implementation) ============
-const track = document.querySelector(".clients_cards");
-const clientCards = document.querySelectorAll(".client_card");
-const slider = document.querySelector(".clients_cards");
-
+// ============ Slider ============
 function updateActiveCard() {
-    const cards = document.querySelectorAll(".client_card"); // ← внутри функции
-
-    let center = slider.scrollLeft + slider.offsetWidth / 2;
+    const cards = document.querySelectorAll(".client_card");
+    const center = slider.scrollLeft + slider.offsetWidth / 2;
 
     cards.forEach(card => {
-        const cardCenter =
-            card.offsetLeft + card.offsetWidth / 2;
-
-        if (Math.abs(center - cardCenter) < card.offsetWidth / 2) {
-            card.classList.add("active");
-        } else {
-            card.classList.remove("active");
-        }
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        Math.abs(center - cardCenter) < card.offsetWidth / 2
+            ? card.classList.add("active")
+            : card.classList.remove("active");
     });
 }
+
 slider.addEventListener("scroll", updateActiveCard);
-// 👉 вправо (2,3,4,1) 
-nextBtn.addEventListener("click", () => { const first = track.firstElementChild; track.appendChild(first); });
-// 👉 влево (4,1,2,3) 
-prevBtn.addEventListener("click", () => { const last = track.lastElementChild; track.prepend(last); });
+nextBtn.addEventListener("click", () => track.appendChild(track.firstElementChild));
+prevBtn.addEventListener("click", () => track.prepend(track.lastElementChild));
 
 updateActiveCard();

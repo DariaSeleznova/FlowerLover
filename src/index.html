@@ -36,11 +36,11 @@
 
                     <button class="close-btn" id="closeBtn">×</button>
 
-                    <a href="#">Головна</a>
-                    <a href="#">Каталог</a>
-                    <a href="#">Про нас</a>
-                    <a href="#">Як замовити</a>
-                    <a href="#">Відгуки</a>
+                    <a href="#hero">Головна</a>
+                    <a href="#catalog">Каталог</a>
+                    <a href="#about">Про нас</a>
+                    <a href="#how-to-order">Як замовити</a>
+                    <a href="#reviews">Відгуки</a>
                     <a href="#">Контакти</a>
 
                 </nav>
@@ -48,7 +48,7 @@
             </div>
         </div>
     </header>
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="container hero__section">
             <div class="hero__content">
                 <p class="hero__subtitle">Неймовірні</p>
@@ -76,7 +76,7 @@
         </div>
 
     </section>
-    <section class="catalog">
+    <section class="catalog" id="catalog">
         <span class="catalog-label">Каталог</span>
         <div class="container catalog-section">
             <div class="delivery">
@@ -404,7 +404,7 @@
                 <button class="bestseller_all">Дивитись всі</button>
             </div>
     </section>
-    <section class="quality">
+    <section class="quality" id="about">
         <div class="quality_title">
             <span class="quality-label">Якість в деталях</span>
         </div>
@@ -447,7 +447,7 @@
         <div class="form-label">
             <span class="form-label_span">Не можете визначитись з вибором букету?</span>
         </div>
-        <div class="form_section">
+        <div class="form_section" id="how-to-order">
             <div class="form_content container">
                 <div class="form">
                     <h3> <b>Відправте заявку</b> <br> і Вам зателефонують <br> протягом однієї хвилини</h3>
@@ -492,7 +492,7 @@
         <div class="clients-label">
             <div class="clients-label_span">Наші клієнти</div>
         </div>
-        <div class="clients">
+        <div class="clients" id="reviews">
             <button class="carousel" id="prevBtn">
                 <img src="./assets/customer/icon _back_.png" alt="">
             </button>
@@ -514,7 +514,43 @@
             <button class="carousel" id="nextBtn"><img src="./assets/customer/icon _forward.png" alt=""></button>
         </div>
     </section>
-    <footer></footer>
+    <footer>
+        <div class="footer_content">
+            <nav class="footer_menu">
+                <a href="#hero">Головна</a>
+                <a href="#catalog">Каталог</a>
+                <a href="#reviews">Відгуки</a>
+                <a href="#how-to-order">Як замовити</a>
+                <a href="#">Контакти</a>
+            </nav>
+            <div class="footer_logo">
+                <img src="./assets/footer/logo.png" alt="">
+            </div>
+            <div class="social_media">
+                <a href="#"><img src="./assets/footer/icon _phone_.png" alt=""></a>
+                <a href="#"><img src="./assets/footer/icon_instagram_.png" alt=""></a>
+                <a href="#"><img src="./assets/footer/icon _facebook_.png" alt=""></a>
+            </div>
+            <div class="footer_contacts">
+                <div class="contact_data">
+                    <p>+38097 777 55 77 </p>
+                    <p>
+                        Наш телефон
+                    </p>
+                </div>
+                <div class="contact_data">
+                    <p>info@floverlover.ua </p>
+                    <p>Контактний е-mail</p>
+                </div>
+                <div class="contact_data">
+                    <p>Київ </p>
+                    <p>вул. Маріупольська, 14.</p>
+                    <span>Наш магазин</span>
+                </div>
+            </div>
+        </div>
+
+    </footer>
 </body>
 
 </html>

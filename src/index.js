@@ -1,3 +1,5 @@
+const { forEach } = require('lodash');
+
 require('./style.scss');
 
 // ============ DOM Elements ============
@@ -16,6 +18,7 @@ const formBlock = document.querySelector(".form");
 const discForm = document.querySelector(".form_discription");
 const section = document.querySelector(".form_content");
 const items = document.querySelectorAll(".form_discription li");
+
 
 // ============ Mobile Menu ============
 burger.addEventListener("click", () => {
@@ -137,3 +140,32 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 
 items.forEach(item => observer.observe(item));
+
+// ============ Carousel (Basic Implementation) ============
+const track = document.querySelector(".clients_cards");
+const clientCards = document.querySelectorAll(".client_card");
+const slider = document.querySelector(".clients_cards");
+
+function updateActiveCard() {
+    const cards = document.querySelectorAll(".client_card"); // ← внутри функции
+
+    let center = slider.scrollLeft + slider.offsetWidth / 2;
+
+    cards.forEach(card => {
+        const cardCenter =
+            card.offsetLeft + card.offsetWidth / 2;
+
+        if (Math.abs(center - cardCenter) < card.offsetWidth / 2) {
+            card.classList.add("active");
+        } else {
+            card.classList.remove("active");
+        }
+    });
+}
+slider.addEventListener("scroll", updateActiveCard);
+// 👉 вправо (2,3,4,1) 
+nextBtn.addEventListener("click", () => { const first = track.firstElementChild; track.appendChild(first); });
+// 👉 влево (4,1,2,3) 
+prevBtn.addEventListener("click", () => { const last = track.lastElementChild; track.prepend(last); });
+
+updateActiveCard();

@@ -57,16 +57,17 @@ body {
 .container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    margin: 0 64px;
+    padding: 0 64px;
+    margin: 0 auto;
 
     @include respond-max(lg) {
         grid-template-columns: repeat(6, 1fr);
-        margin: 0 34px;
+        padding: 0 34px;
     }
 
     @include respond-max(md) {
         grid-template-columns: repeat(4, 1fr);
-        margin: 0;
+        padding: 0;
     }
 }
 
@@ -200,6 +201,7 @@ body {
     background-position: 100% 35%;
     background-size: 45% auto;
     height: 100vh;
+    overflow-x: hidden;
 
     @include respond-max(lg) {
         background-position: 150% -10%;
@@ -280,7 +282,7 @@ body {
                 @include respond-max(sm) {
                     flex-direction: row;
                     padding-left: 0;
-                    padding: 5px
+                    padding: 5px;
                 }
 
             }
@@ -365,7 +367,7 @@ body {
             }
 
             @include respond-max(sm) {
-                gap: 40px
+                gap: 40px;
             }
 
             .features {
@@ -427,7 +429,7 @@ body {
             font-size: 36px;
 
             @include respond-max(md) {
-                font-size: 24px
+                font-size: 24px;
             }
         }
 
@@ -446,7 +448,7 @@ body {
             }
 
             @include respond-max(md) {
-                margin: 50px 20px
+                margin: 50px 20px;
             }
 
 
@@ -595,6 +597,7 @@ body {
                 .filter.active .filter__dropdown {
                     display: flex;
                     flex-direction: column;
+                    z-index: 10;
                 }
 
                 .filter.active .filter__header_btn {
@@ -640,7 +643,6 @@ body {
                 grid-template-columns: repeat(3, 1fr);
                 column-gap: 75px;
                 row-gap: 20px;
-                padding: 0 100px;
 
                 @include respond-max(lg) {
                     column-gap: 20px;
@@ -1001,6 +1003,7 @@ body {
 }
 
 .customer_relations {
+    position: relative;
     background: url(./assets/customer/customer_background.png) no-repeat, $black;
     background-position: 0% 0%;
 
@@ -1276,6 +1279,96 @@ body {
         .form_discription {
             @include respond-max(md) {
                 display: none;
+            }
+        }
+    }
+
+    .clients-label {
+        display: flex;
+        justify-content: flex-end;
+
+        .clients-label_span {
+            padding-right: 236px;
+
+            @include respond-max(md) {
+                padding-right: 94px;
+            }
+        }
+    }
+
+    .clients {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 120px 0;
+        position: relative;
+
+        .carousel {
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+
+            @include respond-max(md) {
+                display: none;
+            }
+        }
+
+        .clients_cards {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .clients_cards {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .clients_cards {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            justify-content: center;
+            scroll-behavior: smooth;
+            overflow: hidden;
+
+            @include respond-max(md) {
+                justify-content: flex-start;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                padding: 20px 10%;
+                gap: 16px;
+            }
+
+            .client_card {
+                flex-shrink: 0;
+                min-width: 200px;
+                transition: transform 0.4s ease;
+                box-shadow: 2px 2px 5px rgba(68, 68, 68, 0.5);
+
+                @include respond-max(md) {
+                    transform: scale(0.9);
+                    opacity: 0.6;
+                    transition: 0.3s ease;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                }
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+
+                @include respond-max(md) {
+                    flex: 0 0 80%;
+                    scroll-snap-align: center;
+                }
+            }
+
+            .client_card.active {
+                transform: scale(1.1);
+                opacity: 1;
             }
         }
     }
